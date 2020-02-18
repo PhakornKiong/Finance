@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+
+<form action="/graph" method="post">
+    <div class="form-group">
+        <input class="form-control" name="symbol" placeholder="Stock Symbol" type="text">
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+
+<div id="myDiv"></div>
+
+<script>
+Plotly.d3.json("{{stockLink}}", function(data){
+console.log("{{stockLink}}");
+yLow = []
+yHigh = []
+xDate = []
+info = data["Time Series (Daily)"];
+
+for (row in info) {
+  xDate.push(row);
+}
+
+for (row in Object.values(info)) {
+  yHigh.push(Object.values(info)[row]["2. high"]);
+  yLow.push(Object.values(info)[row]["3. low"])
+}
+symbol = data["Meta Data"]["2. Symbol"]
+console.log(trace1)
+var trace1 = {
+  type: "scatter",
+  mode: "lines",
+  name: symbol + ' High',
+  x: xDate,
+  y: yHigh,
+  line: {color: '#17BECF'}
+}
+
+var trace2 = {
+  type: "scatter",
+  mode: "lines",
+  name: symbol + ' Low',
+  x: xDate,
+  y: yHigh,
+  line: {color: '#7F7F7F'}
+}
+
+var plotData = [trace1,trace2];
+
+Plotly.newPlot('myDiv', plotData)
+});
+</script>
+{% endblock %}
+
