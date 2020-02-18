@@ -1,5 +1,9 @@
-cs50
-Flask
-Flask-Session
-requests
-gunicorn
+cs50==4.0.2
+Flask==1.1.1
+Flask-Session==0.3.1
+requests==2.22.0
+gunicorn==19.9.0
+werkzeug==0.16.0
+urllib3==1.25.5
+Jinja2==2.10.1
+tempfile2==0.1.1
