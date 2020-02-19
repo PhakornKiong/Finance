@@ -105,7 +105,7 @@ def buy():
             db.execute("INSERT INTO TransactionHistory (symbol, name, shares, price, id, transaction_amount) VALUES(:symbol, :name, :shares, :price, :id, :transaction_amount);", symbol=symbol, name=name, shares=shares, price=price, id=id, transaction_amount=transaction_amount)
 
             #Search if user already has some shares in portfolio
-            list_shares = db.execute("SELECT shares FROM Portfolios WHERE id = :id AND symbol = :symbol", id=id, symbol=symbol)
+            #list_shares = db.execute("SELECT shares FROM Portfolios WHERE id = :id AND symbol = :symbol", id=id, symbol=symbol)
             if list_shares:
                 list_shares = int(list_shares[0]["shares"])
                 totalshares = list_shares + shares
