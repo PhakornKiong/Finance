@@ -105,17 +105,17 @@ def buy():
             db.execute("INSERT INTO TransactionHistory (symbol, name, shares, price, id, transaction_amount) VALUES(:symbol, :name, :shares, :price, :id, :transaction_amount);", symbol=symbol, name=name, shares=shares, price=price, id=id, transaction_amount=transaction_amount)
 
             #Search if user already has some shares in portfolio
-            list_shares = db.execute("SELECT shares FROM Portfolios WHERE id = :id AND symbol = :symbol", id=id, symbol=symbol)
+            #list_shares = db.execute("SELECT shares FROM Portfolios WHERE id = :id AND symbol = :symbol", id=id, symbol=symbol)
 
-            if list_shares:
-                list_shares = int(list_shares[0]["shares"])
-                print(list_shares)
-                totalshares = list_shares + shares
-                print(shares)
-                print(totalshares)
-                db.execute("UPDATE Portfolios SET shares = :list_shares WHERE id = :id AND symbol =:symbol", list_shares=list_shares, id=id, symbol=symbol)
-            else:
-                db.execute("INSERT INTO Portfolios (symbol, shares, id) VALUES(:symbol, :shares, :id);", symbol=symbol, shares=shares, id=id)
+            #if list_shares:
+            #    list_shares = int(list_shares[0]["shares"])
+            #    print(list_shares)
+            #$    totalshares = list_shares + shares
+             #   print(shares)
+             #   print(totalshares)
+             #   db.execute("UPDATE Portfolios SET shares = :list_shares WHERE id = :id AND symbol =:symbol", list_shares=list_shares, id=id, symbol=symbol)
+            #else:
+              #  db.execute("INSERT INTO Portfolios (symbol, shares, id) VALUES(:symbol, :shares, :id);", symbol=symbol, shares=shares, id=id)
             # Redirect user to home page
             return redirect("/")
         else:
