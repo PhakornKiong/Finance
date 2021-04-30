@@ -4,7 +4,7 @@ Flask-Session==0.3.1
 requests==2.22.0
 gunicorn==19.9.0
 werkzeug==0.16.0
-urllib3==1.25.5
+urllib3==1.25.8
 Jinja2==2.10.1
 tempfile2==0.1.1
 psycopg2
